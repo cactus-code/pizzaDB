@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+<head>
+    <title>Pizzas or something?</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="shortcut icon" type="image/png" href="/static/favicon.ico"/>
+</head>
+<body>
+    <div id="wrapper">
+        {% include "header.html" %}
+        {% include "navigation.html" %}
+        {% block content %}{% endblock %}
+        {% include "footer.html" %}
+    </div>
+</body>
+</html>

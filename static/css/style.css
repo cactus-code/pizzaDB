@@ -1,0 +1,57 @@
+html {
+    font-family: "Comic Sans MS";
+    color: black;
+    background-color: darkred;
+}
+
+#wrapper {
+    margin: 5% auto;
+    padding: 5%;
+    background-color: white;
+    width: 960px;
+}
+
+header {
+    width: 100%;
+    background-color: red;
+    color: pink;
+    text-align: center;
+    border-radius: 20px;
+}
+
+nav {
+    width: 100%;
+    height: 35px;
+    background-color: darkorange;
+}
+
+nav li {
+    list-style-type: none;
+    text-align: center;
+}
+
+nav li a {
+    padding: 5px 10px;
+    float: left;
+    display: block;
+    color: white;
+    text-decoration: none;
+    height: 25px;
+}
+
+nav li a:hover {
+    background-color: antiquewhite;
+    color: black;
+}
+
+main {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+main li {
+    list-style-type: none;
+}
+
+footer {
+    background-color: white;
+}
