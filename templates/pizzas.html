@@ -5,7 +5,9 @@
     Pizzas:
     <ul>
     {% for pizza in results %}
-        <li>{{ pizza[1] }}
+        <li>
+            <a href="/pizza/{{ pizza[1] }}">{{ pizza[1] }}</a>
+        </li>
     {% endfor %}
     </ul>
 </p>

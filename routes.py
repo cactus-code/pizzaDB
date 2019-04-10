@@ -15,17 +15,14 @@ def pizzas():
     return render_template("pizzas.html", results=results)
 
 @app.route('/pizza/<pizza_name>')
-def show_pizza(pizza_name):
-    #check if pizza_name is valid
-    #some db query with pizza_name
-    description = "blah blah"
-    base = "crispy ofc"
-    toppings = ['Tomato', 'Cheese', 'Ham']
-    topping_string = ""
-    for topping in toppings:
-        topping_string += topping + " "
-    return render_template("show_pizza.html", name=pizza_name, description
-                            =description, base=base, toppings=topping_string)
+def pizza(pizza_name):
+    conn = sqlite3.connect('db/pizzas.db')
+    cur = conn.cursor()
+    query = 'SELECT * FROM Pizza WHERE Pizza.name = "{}"'.format(pizza_name)
+    cur.execute(query)
+    results = cur.fetchall()
+    print(results[1])
+    return render_template("show_pizza.html", results=results)
 
 if __name__ == "__main__":
     app.run(debug=True, host='localhost', port=8080)
