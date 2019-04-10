@@ -21,11 +21,17 @@ def pizzas():
 def pizza(pizza_name):
     conn = sqlite3.connect('db/pizzas.db')
     cur = conn.cursor()
-    query = 'SELECT * FROM Pizza WHERE Pizza.name = "{}";'.format(pizza_name)
-    print(query)
-    cur.execute(query)
-    results = cur.fetchall()
-    return render_template("show_pizza.html", results=results)
+    cur.execute("SELECT * FROM Pizza WHERE Pizza.name = ?", (pizza_name,))
+    pizza_results = cur.fetchone()
+    cur.execute("SELECT * FROM Base WHERE Base.id =?", (pizza_results[3],))
+    base = cur.fetchone()
+    cur.execute('''SELECT Topping.name as Topping, Topping.description as
+    Description FROM Pizza, Topping, PizzaTopping WHERE Pizza.name =
+    "{}" AND Pizza.id = PizzaTopping.pid AND Topping.id =
+    PizzaTopping.tid'''.format(pizza_name))
+    toppings = cur.fetchall()
+    return render_template("show_pizza.html", results=pizza_results,
+                           base=base[1], toppings=toppings)
 
 
 if __name__ == "__main__":

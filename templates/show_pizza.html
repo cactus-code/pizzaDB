@@ -2,10 +2,15 @@
 {% block content %}
 <main>
 <p>
-    Name: {{ results[1] }}
-    Details: {{ results[2] }}
-    Base: {{ results[3] }}
-    Toppings: Yikes
+    <li>Name: {{ results[1] }}</li>
+    <li>Details: {{ results[2] }}</li>
+    <li>Base: {{ base }}</li>
+    <li>Toppings:
+        {% for topping in toppings %}
+            {{ topping[0] }}
+        {% endfor %}
+    <li>
+    <li>Photo: {{ results[4] }}</li>
 </p>
 </main>
 {% endblock %}
