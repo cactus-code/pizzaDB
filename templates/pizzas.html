@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+<main>
+<p>
+    Pizzas:
+    <ul>
+    {% for pizza in results %}
+        <li>{{ pizza[1] }}
+    {% endfor %}
+    </ul>
+</p>
+</main>
+{% endblock %}
