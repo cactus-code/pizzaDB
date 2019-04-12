@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+<main>
+<p>
+    Toppings:
+    <ul>
+    {% for topping in results %}
+        <li>
+            <a href="/topping/{{ topping[1] }}">{{ topping[1] }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+</p>
+</main>
+{% endblock %}

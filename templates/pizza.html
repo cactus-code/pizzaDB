@@ -5,12 +5,8 @@
     <li>Name: {{ results[1] }}</li>
     <li>Details: {{ results[2] }}</li>
     <li>Base: {{ base }}</li>
-    <li>Toppings:
-        {% for topping in toppings %}
-            {{ topping[0] }}
-        {% endfor %}
-    <li>
-    <li>Photo: {{ results[4] }}</li>
+    <li>Toppings: {{ toppings }}</li>
+    <li>Photo: <img src='{{ results[4] }}' alt='{{ results[1] }} Picture'></li>
 </p>
 </main>
 {% endblock %}

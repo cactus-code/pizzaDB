@@ -30,8 +30,32 @@ def pizza(pizza_name):
     "{}" AND Pizza.id = PizzaTopping.pid AND Topping.id =
     PizzaTopping.tid'''.format(pizza_name))
     toppings = cur.fetchall()
-    return render_template("show_pizza.html", results=pizza_results,
-                           base=base[1], toppings=toppings)
+    topping_string = ""
+    for i in range(len(toppings)):
+        topping_string += toppings[i][0]
+        if (i < (len(toppings) - 1)):
+            topping_string += ", "
+    return render_template("pizza.html", results=pizza_results,
+                           base=base[1], toppings=topping_string)
+
+
+@app.route('/toppings')
+def toppings():
+    conn = sqlite3.connect('db/pizzas.db')
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM Topping")
+    results = cur.fetchall()
+    return render_template("toppings.html", results=results)
+
+
+@app.route('/topping/<topping_name>')
+def topping(topping_name):
+    conn = sqlite3.connect('db/pizzas.db')
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM Topping WHERE Topping.name = ?",
+                (topping_name,))
+    topping_results = cur.fetchone()
+    return render_template("topping.html", results=topping_results)
 
 
 if __name__ == "__main__":
