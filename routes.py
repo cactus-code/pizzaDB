@@ -30,13 +30,10 @@ def pizza(pizza_name):
     "{}" AND Pizza.id = PizzaTopping.pid AND Topping.id =
     PizzaTopping.tid'''.format(pizza_name))
     toppings = cur.fetchall()
-    topping_string = ""
-    for i in range(len(toppings)):
-        topping_string += toppings[i][0]
-        if (i < (len(toppings) - 1)):
-            topping_string += ", "
+    toppings_length = len(toppings)
     return render_template("pizza.html", results=pizza_results,
-                           base=base[1], toppings=topping_string)
+                           base=base[1], toppings=toppings,
+                           toppings_length=toppings_length)
 
 
 @app.route('/toppings')

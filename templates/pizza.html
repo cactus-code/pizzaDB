@@ -5,8 +5,15 @@
     <li>Name: {{ results[1] }}</li>
     <li>Details: {{ results[2] }}</li>
     <li>Base: {{ base }}</li>
-    <li>Toppings: {{ toppings }}</li>
-    <li>Photo: <img src='{{ results[4] }}' alt='{{ results[1] }} Picture'></li>
+    <li>
+        Toppings:
+        {% for i in range(toppings_length) %}
+            <a href='/topping/{{ toppings[i][0] }}'>{{ toppings[i][0] }}</a>{%
+                if i != toppings_length - 1 %},{% endif %}
+        {% endfor %}
+    </li>
+    <li>Photo: <br><img src='{{ results[4] }}' alt='{{ results[1] }} Picture'>
+    </li>
 </p>
 </main>
 {% endblock %}
