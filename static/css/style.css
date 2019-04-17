@@ -30,7 +30,7 @@ nav li {
     text-align: center;
 }
 
-nav li a {
+nav a {
     padding: 5px 10px;
     float: left;
     display: block;
@@ -39,7 +39,7 @@ nav li a {
     height: 25px;
 }
 
-nav li a:hover {
+nav a:hover {
     background-color: antiquewhite;
     color: black;
 }
@@ -52,10 +52,14 @@ main li {
     list-style-type: none;
 }
 
-footer {
-    background-color: white;
+main a {
+    color: blue;
 }
 
-img {
+main img {
     width: 50%
+}
+
+footer {
+    background-color: white;
 }
